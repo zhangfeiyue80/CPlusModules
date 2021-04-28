@@ -43,3 +43,19 @@ int SelfDebug::SetStack() {
     _stacknum = backtrace(_stackbuffer, BUFSIZE);
     return 0;
 }
+
+// example
+/* 
+#include <DMMResource/debug.hpp>
+
+Dbg dbg("Media::getNewRef ");
+vector<string> vstr;
+vector<string>::iterator i;
+SelfDebug dmm_btdbg;
+dmm_btdbg.SetStack();
+dmm_btdbg.GetStack2File("/opt/DPX/logs/dmm_stack.txt");
+dmm_btdbg.GetStack2String(vstr);
+for (i=vstr.begin(); i != vstr.end(); ++i) {
+    dbg(0) << *i << std::endl;
+}
+*/

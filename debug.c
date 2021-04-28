@@ -24,3 +24,19 @@ int record_stack_2_file() {
   fclose(fp);
   return 0;
 }
+
+// example
+/*
+#include "debug.h"
+record_stack_2_file();
+*/
+
+// example
+/*
+int i;
+STACK_INFO* pstack_info;
+pstack_info=get_stack_2_string();
+for(i=0; i < pstack_info->stacknum; i++) {
+  msg_print(0054, tm_str_id, 0L, pstack_info->c_stack[i]);
+}
+*/
