@@ -21,21 +21,22 @@ int SelfDebug::GetStack2File(char *path) {
     _dfile = fopen(path, "a+");
     if (_dfile == NULL) return -1;
     backtrace_symbols_fd(_stackbuffer, _stacknum, fileno(_dfile));
+    fprintf(_dfile, "\n");
+    fflush(_dfile);
     return 0;
 }
 
-vector<string> SelfDebug::GetStack2String() {
+int SelfDebug::GetStack2String(vector<string> &vstr) {
     int i;
     char **cstr;
-    vector<string> vstr;
     string str;
 
-    cstr = backtrace_symbols(_stackbuffer, BUFSIZE);
+    cstr = backtrace_symbols(_stackbuffer, _stacknum);
     for(i=0; i<_stacknum; i++) {
         str = cstr[i];
         vstr.push_back(str);
     }
-    return vstr;
+    return 0;
 }
 
 int SelfDebug::SetStack() {

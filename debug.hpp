@@ -16,7 +16,7 @@ public:
     SelfDebug();
     ~SelfDebug();
     int GetStack2File(char *path);
-    vector<string> GetStack2String();
+    int GetStack2String(vector<string> &vstr);
     int SetStack();
 
 private:
